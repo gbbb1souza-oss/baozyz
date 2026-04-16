@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
 const ITEMS = [
-  { id: "feliz",       label: "FELIZ",        fontSize: 80, offsetX: 0,  offsetY: 0,  skew: -6,  skewY: 10  },
-  { id: "aniversario", label: "ANIVERSÁRIO",  fontSize: 66, offsetX: 20, offsetY: 8,  skew: -11, skewY: -10 },
-  { id: "parabens",    label: "PARABÉNS",     fontSize: 68, offsetX: 8,  offsetY: 6,  skew: 0,   skewY: -4  },
-  { id: "veado",       label: "VEADO",        fontSize: 74, offsetX: 16, offsetY: 8,  skew: -3,  skewY: 5   },
-  { id: "pelo",        label: "PELO",         fontSize: 80, offsetX: 5,  offsetY: 6,  skew: -5,  skewY: 8   },
-  { id: "seu",         label: "SEU",          fontSize: 90, offsetX: 10, offsetY: 4,  skew: -8,  skewY: -6  },
-  { id: "dia",         label: "DIA",          fontSize: 96, offsetX: 14, offsetY: 6,  skew: -4,  skewY: 7   },
+  { id: "feliz",       label: "FELIZ",        fontSize: 80, offsetX: 0,  offsetY: 0,  skew: -6,  skewY: 10,  url: "https://www.youtube.com/shorts/JOcQYyFC5PQ" },
+  { id: "aniversario", label: "ANIVERSÁRIO",  fontSize: 66, offsetX: 20, offsetY: 8,  skew: -11, skewY: -10, url: "https://www.youtube.com/shorts/EqOhCEbZCZc" },
+  { id: "parabens",    label: "PARABÉNS",     fontSize: 68, offsetX: 8,  offsetY: 6,  skew: 0,   skewY: -4,  url: "https://www.youtube.com/watch?v=1Mcdh2Vf2Xk" },
+  { id: "veado",       label: "VEADO",        fontSize: 74, offsetX: 16, offsetY: 8,  skew: -3,  skewY: 5,   url: "https://www.youtube.com/watch?v=s1tAYmMjLdY&list=RDs1tAYmMjLdY&start_radio=1" },
+  { id: "pelo",        label: "PELO",         fontSize: 80, offsetX: 5,  offsetY: 6,  skew: -5,  skewY: 8,   url: "https://www.youtube.com/shorts/iGaYkVFGYIM" },
+  { id: "seu",         label: "SEU",          fontSize: 90, offsetX: 10, offsetY: 4,  skew: -8,  skewY: -6,  url: "https://www.youtube.com/shorts/qwt-KQEfcDU" },
+  { id: "dia",         label: "DIA",          fontSize: 96, offsetX: 14, offsetY: 6,  skew: -4,  skewY: 7,   url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" },
 ];
 
 const CLIP_SHAPES = [
@@ -37,7 +37,7 @@ export default function P3Menu({ onNavigate }) {
     const onKey = (e) => {
       if (e.key === "ArrowUp")   activate(Math.max(0, active - 1));
       if (e.key === "ArrowDown") activate(Math.min(ITEMS.length - 1, active + 1));
-      if (e.key === "Enter")     window.open('https://www.youtube.com/watch?v=1Mcdh2Vf2Xk', '_blank');
+      if (e.key === "Enter")     window.open(ITEMS[active].url, '_blank');
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -218,8 +218,8 @@ export default function P3Menu({ onNavigate }) {
 
       <div className="p3-overlay">
         <div className="p3-name-tag">
-          <span>baozyz's</span>
-          <span>persona</span>
+          <span>O</span>
+          <span>JOGO</span>
         </div>
         <div className="p3-stripe" />
         <div className="p3-stripe2" />
@@ -243,7 +243,7 @@ export default function P3Menu({ onNavigate }) {
                   marginTop: item.offsetY,
                   transitionDelay: mounted ? `${i * 80}ms` : "0ms",
                 }}
-                onClick={(e) => { e.preventDefault(); window.open('https://www.youtube.com/watch?v=1Mcdh2Vf2Xk', '_blank'); }}
+                onClick={(e) => { e.preventDefault(); window.open(item.url, '_blank'); }}
                 onMouseEnter={() => activate(i)}
                 aria-current={isActive ? "page" : undefined}
               >
